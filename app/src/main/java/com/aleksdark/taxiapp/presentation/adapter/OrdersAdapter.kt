@@ -8,11 +8,19 @@ import com.aleksdark.taxiapp.presentation.models.OrderModel
 
 class OrdersAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var ordersList : List<OrderModel> = ArrayList()
+    var ordersList: List<OrderModel> = ArrayList()
+    var onItemClick: (item: OrderModel) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.order_item, parent, false)
-        return OrderViewHolder(view)
+        val holder = OrderViewHolder(view)
+
+        view.setOnClickListener {
+            val adapterPosition = holder.adapterPosition
+            if (adapterPosition != RecyclerView.NO_POSITION)
+                onItemClick(ordersList.get(holder.adapterPosition))
+        }
+        return holder
     }
 
     override fun getItemCount(): Int {

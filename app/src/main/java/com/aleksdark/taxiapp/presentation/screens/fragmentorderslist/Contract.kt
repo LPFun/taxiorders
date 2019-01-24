@@ -7,8 +7,9 @@ import com.aleksdark.taxiapp.presentation.mvp.MvpView
 interface Contract {
     interface View : MvpView{
         fun showOrdersList(dataList : List<OrderModel>)
+        fun goToFragment(order: OrderModel)
     }
     interface Presenter : MvpPresenter{
-        fun onOrderClick()
+        fun onOrderClick(order : OrderModel)
     }
 }

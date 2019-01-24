@@ -5,9 +5,10 @@ import com.aleksdark.taxiapp.R
 import com.aleksdark.taxiapp.presentation.adapter.OrdersAdapter
 import com.aleksdark.taxiapp.presentation.models.OrderModel
 import com.aleksdark.taxiapp.presentation.mvp.BaseView
+import com.aleksdark.taxiapp.presentation.screens.fragmentordersdetails.OrderDetailsView
 import kotlinx.android.synthetic.main.fragment_active_orders_list.*
 
-class OrdersListView: BaseView<OrdersListPresenter>(), Contract.View {
+class OrdersListView : BaseView<OrdersListPresenter>(), Contract.View {
 
     var adapter = OrdersAdapter()
 
@@ -29,12 +30,20 @@ class OrdersListView: BaseView<OrdersListPresenter>(), Contract.View {
 
     override fun initView() {
         rv.layoutManager = LinearLayoutManager(context)
+        adapter.onItemClick = {
+            mPresenter?.onOrderClick(it)
+        }
         rv.adapter = adapter
+
     }
 
     override fun showOrdersList(dataList: List<OrderModel>) {
         adapter.ordersList = dataList
         adapter.notifyDataSetChanged()
+    }
+
+    override fun goToFragment(order: OrderModel) {
+        goToFragment(OrderDetailsView.newInstance(order))
     }
 
 }

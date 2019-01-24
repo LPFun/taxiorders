@@ -45,7 +45,7 @@ abstract class BaseView<P : MvpPresenter> : Fragment(), MvpView {
 
     }
 
-    fun goToFragment(fragment: Fragment){
+    open fun goToFragment(fragment: Fragment){
         fragmentManager!!.beginTransaction()
             .apply {
                 replace(R.id.content_container, fragment)

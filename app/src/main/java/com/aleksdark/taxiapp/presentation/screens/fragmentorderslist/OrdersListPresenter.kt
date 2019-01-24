@@ -1,11 +1,15 @@
 package com.aleksdark.taxiapp.presentation.screens.fragmentorderslist
 
+import com.aleksdark.taxiapp.presentation.models.OrderModel
 import com.aleksdark.taxiapp.presentation.mvp.BasePresenter
 import com.aleksdark.taxiapp.presentation.utils.Mapper
 import com.aleksdark.taxiapp.repository.Repository
 import io.reactivex.disposables.Disposable
 
 class OrdersListPresenter: BasePresenter<Contract.View>(), Contract.Presenter {
+    override fun onOrderClick(order: OrderModel) {
+        v?.goToFragment(order)
+    }
 
     private var disposable: Disposable? = null
     private val repository = Repository()
@@ -25,10 +29,6 @@ class OrdersListPresenter: BasePresenter<Contract.View>(), Contract.Presenter {
                 v?.showError(true)
             }
         })
-    }
-
-    override fun onOrderClick() {
-
     }
 
     override fun destroy() {
