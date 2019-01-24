@@ -7,5 +7,6 @@ open class OrderModel {
     var endCity: String? = null
     var endAddress: String? = null
     var date: String? = null
+    var time: String? = null
     var cost: String? = null
 }
