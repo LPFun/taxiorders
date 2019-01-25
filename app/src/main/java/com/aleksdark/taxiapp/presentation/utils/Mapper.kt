@@ -18,6 +18,7 @@ class Mapper{
                 orderModel.date = getDate(it.orderTime)
                 orderModel.time = getTime(it.orderTime)
                 orderModel.cost = "${(it.price!!.amount)!!.div(100).toFloat()} ${getCurrencySymbol(it.price!!.currency)}"
+                orderModel.imgId = it.vehicle!!.photo
                 mappedList.add(orderModel)
             }
             return mappedList

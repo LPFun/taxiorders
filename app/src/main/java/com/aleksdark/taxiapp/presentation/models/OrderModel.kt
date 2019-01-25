@@ -9,4 +9,5 @@ open class OrderModel {
     var date: String? = null
     var time: String? = null
     var cost: String? = null
+    var imgId: String? = null
 }

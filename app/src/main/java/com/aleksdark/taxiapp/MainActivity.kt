@@ -2,6 +2,7 @@ package com.aleksdark.taxiapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.aleksdark.taxiapp.presentation.screens.fragmentorderslist.OrdersListView
 
 class MainActivity : AppCompatActivity() {
